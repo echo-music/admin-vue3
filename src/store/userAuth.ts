@@ -4,20 +4,23 @@ import type {LoginForm} from '@/types/login'
 import userApi from '@/api/userApi'
 import { ElMessage } from 'element-plus'
 import {router} from '@/router'
+import type {UserInfo} from '@/types/user'
+
 export const useAuthStore = defineStore('user',()=>{
-     let userInfo =  ref({
+     let userInfo =  ref<UserInfo>({
         userid:0,
         username:"",
         avatar:"",
-        token:"ok"
+        token:"",
      })
      let isErr= ref(false)
      const changeIsErr= ()=>{
        isErr.value = false
      }
+
      const login = async(data:LoginForm)=>{
       userApi.login(data).then((res:any)=>{
-         const respone = res.data!;
+         const respone = res;
          if (respone.code !=0){
           isErr.value = true
            ElMessage.error(respone.msg);
@@ -39,8 +42,7 @@ export const useAuthStore = defineStore('user',()=>{
      }
 
      const isLogin = ():boolean=>{
-        // return userInfo?.value?.token?.length >0
-        return true
+        return userInfo?.value?.token?.length >0
      }
 
      const logout = ()=>{

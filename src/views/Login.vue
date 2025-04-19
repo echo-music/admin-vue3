@@ -105,7 +105,7 @@ const submitForm = async () => {
      await useAuth.login(loginForm)
     } 
     if (useAuth.isErr) {
-      getCaptcha();
+      // getCaptcha();
       useAuth.changeIsErr();
     }
     

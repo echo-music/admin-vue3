@@ -1,3 +1,5 @@
+import { type RouteRecordRaw} from 'vue-router';
+
 export interface TableData {
     list: any[];
     page: number;
@@ -5,3 +7,10 @@ export interface TableData {
     pageSize: number;
  }
  
+
+ export interface UserInfo {
+    userid: number
+    username: string
+    avatar: string
+    token: string
+ }

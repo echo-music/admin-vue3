@@ -1,11 +1,24 @@
 import type {LoginForm} from '@/types/login'
 import http from '@/utils/http/http';
 
-
 // 登陆
 const login = async (data: LoginForm) =>{
-    const url = "/v1/admin/login"
-   return http.post(url,data)
+    // 模拟登陆，实际应该请求后端接口
+    return new Promise((resolve, reject) => {
+        resolve({
+            code:0,
+            msg:"登陆成功",
+            data:{
+                avatar:"",
+                credential:{
+                    token:"xxxxxxxxxxxxxxxxxxxxxxx"
+                },
+               
+            },
+        })
+    })
+//     const url = "/v1/admin/login"
+//    return http.post(url,data)
 }
 
 // 验证码
