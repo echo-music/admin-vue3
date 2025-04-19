@@ -17,10 +17,10 @@
           <el-table-column prop="phone" label="手机号" />
           <el-table-column prop="create_at" label="注册时间"  />
           <el-table-column prop="balance" label="账户余额"  />
-          <el-table-column prop="idcard" label="宠物编号"  />
-          <el-table-column prop="pet_name" label="宠物名称"  />
-          <el-table-column prop="species_val" label="宠物品种"  />
-          <el-table-column prop="pet_age" label="宠物年龄"  />
+          <el-table-column prop="idcard" label="狗狗编号"  />
+          <el-table-column prop="pet_name" label="狗狗名称"  />
+          <el-table-column prop="species_val" label="狗狗品种"  />
+          <el-table-column prop="pet_age" label="狗狗年龄"  />
           <el-table-column prop="level" label="培养次数"  />
 
            <el-table-column  fixed="right" label="操作" width="200">
@@ -157,26 +157,26 @@
                       </p>
                     </div>
                   </el-tab-pane>
-                  <el-tab-pane label="宠物信息" name="second">
+                  <el-tab-pane label="狗狗信息" name="second">
                     <div class="flex flex-wrap justify-start" v-if="userDetailData.petRole.id">
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物ID:</span>
+                        <span class="w-[100px] font-bold">狗狗ID:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.pet_id}}</span>
                       </p>
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物分身ID:</span>
+                        <span class="w-[100px] font-bold">狗狗分身ID:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.id}}</span>
                       </p>
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物编号:</span>
+                        <span class="w-[100px] font-bold">狗狗编号:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.idcard}}</span>
                       </p>
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物名称:</span>
+                        <span class="w-[100px] font-bold">狗狗名称:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.name}}</span>
                       </p>
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物品种和年龄:</span>
+                        <span class="w-[100px] font-bold">狗狗品种和年龄:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.breed_val}}-{{userDetailData.petRole.age}}</span>
                       </p>
                       <p class="m-3">
@@ -196,7 +196,7 @@
                         <span class="ml-1 ">0</span>
                       </p>
                       <p class="m-3">
-                        <span class="w-[100px] font-bold">宠物评分:</span>
+                        <span class="w-[100px] font-bold">狗狗评分:</span>
                         <span class="ml-1 ">{{userDetailData.petRole.rank}}</span>
                       </p>
                       <p class="m-3">
@@ -205,7 +205,7 @@
                       </p>
                     </div> 
                   </el-tab-pane>
-                  <el-tab-pane label="宠物属性" name="third">
+                  <el-tab-pane label="狗狗属性" name="third">
                     <div class="flex flex-wrap justify-start " v-if="userDetailData.petAttr?.length>0">
                       <p class="m-3" v-for="item in userDetailData.petAttr" :key="item.attribute">
                         <span class="w-[100px] font-bold">{{item.attribute_val}}</span>
@@ -213,7 +213,7 @@
                       </p>
                     </div>  
                   </el-tab-pane>
-                  <el-tab-pane label="宠物装扮" name="fourth">
+                  <el-tab-pane label="狗狗装扮" name="fourth">
                     <h3 class="m-1 font-bold">已装扮</h3>
                     <div class="">
                       <el-table

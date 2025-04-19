@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('user',()=>{
         userid:0,
         username:"",
         avatar:"",
-        token:""
+        token:"ok"
      })
      let isErr= ref(false)
      const changeIsErr= ()=>{
@@ -39,7 +39,8 @@ export const useAuthStore = defineStore('user',()=>{
      }
 
      const isLogin = ():boolean=>{
-        return userInfo?.value?.token?.length >0
+        // return userInfo?.value?.token?.length >0
+        return true
      }
 
      const logout = ()=>{

@@ -2,7 +2,7 @@
     <el-row class="login" style="min-width: 255px;">
       <el-col :lg="14" class="left bg-indigo-500">
         <div>
-            <div class="text-5xl text-zinc-50 font-bold mb-5">欢迎使用宠物社区运营后台</div>
+            <div class="text-5xl text-zinc-50 font-bold mb-5">欢迎使用狗狗社区运营后台</div>
             <div class="text-white"></div> 
         </div>
      </el-col>

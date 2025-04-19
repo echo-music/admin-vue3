@@ -48,17 +48,6 @@ export const dynamicRoutes:RouteRecordRaw[] = [
     children:[],
     component: ()=>import('@/views/Goods.vue'),
   },
-  // {
-  //   path:"/orders",
-  //   name:"order",
-  //   meta:{
-  //     title:"订单查询",
-  //     icon:"Search",
-
-  //   },
-  //   children:[],
-  //   component:()=> import('@/views/Order.vue'),
-  // },
   {
     path:"/ads",
     name:"ad",
