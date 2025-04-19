@@ -8,7 +8,7 @@
                 </el-icon>
             </el-button>
             <el-breadcrumb separator="/" class="ml-5">
-                <el-breadcrumb-item index="/home" key="/home" :to="{ path: '/home' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item index="/dashboard" key="/dashboard" :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item v-for="(item, index) in breadcrumbData" :key="item.path" >
                    <span :to="{ path: item.path,name:item.name }">{{item?.meta?.title}}</span>
                 </el-breadcrumb-item>
@@ -48,7 +48,7 @@
     const breadcrumbData = ref([]);
     const getBreadcrumbData = () => {
         breadcrumbData.value = route.matched.filter((item) => {
-                return item.meta && item.meta.title && item.path !=="/" && item.path !== "/home";
+                return item.meta && item.meta.title && item.path !=="/" && item.path !=="/dashboard" ;
         });
     };
     watch(route,()=>{
