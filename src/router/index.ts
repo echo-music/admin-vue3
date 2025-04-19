@@ -1,6 +1,4 @@
 import { createRouter, createWebHashHistory ,type RouteRecordRaw} from 'vue-router';
-
-import Login from '@/views/Login.vue';
 import {useAuthStore} from '@/store/userAuth'
 
 // 动态路由-可通过接口获取，这里暂时写死
@@ -65,7 +63,7 @@ export const dynamicRoutes:RouteRecordRaw[] = [
 const routes:RouteRecordRaw[] = [
   {
     path:"/login",
-    component: Login
+    component: ()=>import('@/views/Login.vue'),
   },
   {
     name:"home",
