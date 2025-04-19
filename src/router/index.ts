@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory ,type RouteRecordRaw} from 'vue-router';
 import {useAuthStore} from '@/store/userAuth'
 
-// 动态路由-可通过接口获取，这里暂时写死
+
 export const dynamicRoutes:RouteRecordRaw[] = [
   {
     path:"/dashboard",
@@ -53,8 +53,20 @@ export const dynamicRoutes:RouteRecordRaw[] = [
       icon:"Setting",
 
     },
-    children:[],
-    component: ()=>import('@/views/Ad.vue'),
+    children:[
+      {
+        path:"/ads/list",
+        name:"ad_list",
+        meta:{
+          title:"页面1",
+          icon:"Setting",
+    
+        },
+        children:[],
+        component: ()=>import('@/views/other/Page1.vue'),
+      },
+    ],
+    // component: ()=>import('@/views/Ad.vue'),
   },
   
 ];
@@ -83,10 +95,8 @@ export const router = createRouter({
 });
 router.beforeEach((to, from,next) => {
   const useAuth = useAuthStore()
-  // console.log("useAuth.isLogin",useAuth.isLogin(),to.path)
   if(to.path == "/login") return next();
   if (useAuth.isLogin()== false) {
-    console.log("未授权请重新登陆")
     return next("/login");
   }
   next()
