@@ -1,0 +1,108 @@
+import { createRouter, createWebHashHistory ,type RouteRecordRaw} from 'vue-router';
+
+import Login from '@/views/Login.vue';
+import Main from '@/views/Main.vue';
+import {useAuthStore} from '@/store/userAuth'
+
+// 动态路由-需要根据权限显示哪些子菜单
+export const dynamicRoutes:RouteRecordRaw[] = [
+  {
+    path:"/home",
+    name:"home",
+    meta:{
+      title:"首页",
+      icon:"House"
+    },
+    component:()=>import('@/views/Home.vue'),
+    children:[],
+  },
+  {
+    path:"/users",
+    name:"user",
+    meta:{
+      title:"用户管理",
+      icon:"User",
+    },
+    component:()=>import('@/views/User.vue'),
+    children:[],
+  },
+  {
+    path:"/equips",
+    name:"equip",
+    meta:{
+      title:"装备管理",
+      icon:"Setting",
+
+    },
+    children:[],
+    component: ()=>import('@/views/Equip.vue'),
+  },
+  {
+    path:"/goods/list",
+    name:"goodsList",
+    meta:{
+      title:"商品管理",
+      icon:"Setting",
+
+    },
+    children:[],
+    component: ()=>import('@/views/Goods.vue'),
+  },
+  // {
+  //   path:"/orders",
+  //   name:"order",
+  //   meta:{
+  //     title:"订单查询",
+  //     icon:"Search",
+
+  //   },
+  //   children:[],
+  //   component:()=> import('@/views/Order.vue'),
+  // },
+  {
+    path:"/ads",
+    name:"ad",
+    meta:{
+      title:"广告配置",
+      icon:"Setting",
+
+    },
+    children:[],
+    component: ()=>import('@/views/Ad.vue'),
+  },
+  
+];
+
+
+const routes:RouteRecordRaw[] = [
+  {
+    path:"/login",
+    component: Login
+  },
+  {
+    name:"main",
+    path:"/",
+    // redirect:"/home",
+    meta:{
+      title:"主页"
+    }, 
+    component: Main,
+    children:[...dynamicRoutes],
+  }
+]
+export const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+router.beforeEach((to, from,next) => {
+  const useAuth = useAuthStore()
+  // console.log("useAuth.isLogin",useAuth.isLogin(),to.path)
+  if(to.path == "/login") return next();
+  if (useAuth.isLogin()== false) {
+    console.log("未授权请重新登陆")
+    return next("/login");
+  }
+  next()
+})
+
+export default router;
