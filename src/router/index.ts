@@ -1,19 +1,18 @@
 import { createRouter, createWebHashHistory ,type RouteRecordRaw} from 'vue-router';
 
 import Login from '@/views/Login.vue';
-import Main from '@/views/Main.vue';
 import {useAuthStore} from '@/store/userAuth'
 
-// 动态路由-需要根据权限显示哪些子菜单
+// 动态路由-可通过接口获取，这里暂时写死
 export const dynamicRoutes:RouteRecordRaw[] = [
   {
-    path:"/home",
-    name:"home",
+    path:"/dashboard",
+    name:"dashboard",
     meta:{
       title:"首页",
       icon:"House"
     },
-    component:()=>import('@/views/Home.vue'),
+    component:()=>import('@/views/Dashboard.vue'),
     children:[],
   },
   {
@@ -69,13 +68,14 @@ const routes:RouteRecordRaw[] = [
     component: Login
   },
   {
-    name:"main",
+    name:"home",
     path:"/",
-    // redirect:"/home",
+    redirect:"/dashboard",
     meta:{
       title:"主页"
     }, 
-    component: Main,
+    component: ()=>import('@/views/Home.vue'),
+
     children:[...dynamicRoutes],
   }
 ]
